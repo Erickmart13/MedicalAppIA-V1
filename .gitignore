@@ -1,4 +1,5 @@
 /.phpunit.cache
+/argon-dashboard-tailwind-main
 /node_modules
 /public/build
 /public/hot
