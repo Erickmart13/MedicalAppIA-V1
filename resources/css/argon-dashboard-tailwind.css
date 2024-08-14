@@ -75,6 +75,8 @@ body {
   /* 2 */
 }
 
+
+
 /*
 1. Add the correct height in Firefox.
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
@@ -197,6 +199,8 @@ table {
 
 button,
 input,
+
+
 optgroup,
 select,
 textarea {
@@ -1177,7 +1181,7 @@ h6 {
 }
 
 .h-sidenav {
-  height: calc(100vh - 360px);
+  height: calc(100vh - 160px);
 }
 
 .h-8 {
@@ -1258,6 +1262,18 @@ h6 {
 
 .max-h-8 {
   max-height: 2rem;
+}
+.max-h-10 {
+  max-height: 2.5rem;
+}
+.max-h-12 {
+  max-height: 3rem;
+}
+.max-h-48 {
+  max-height: 12rem;
+}
+.max-h-44 {
+  max-height: 11rem;
 }
 
 .max-h-screen {
@@ -1820,6 +1836,16 @@ h6 {
   --tw-border-opacity: 1;
   border-color: rgb(94 114 228 / var(--tw-border-opacity));
 }
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+.border-green-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 197 94 / var(--tw-border-opacity));
+}
+
+
 
 .border-black\/12\.5 {
   border-color: rgb(0 0 0 / 0.125);
@@ -1875,12 +1901,46 @@ h6 {
 
 .bg-gray-50 {
   --tw-bg-opacity: 1;
-  background-color: rgb(248 249 250 / var(--tw-bg-opacity));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-blue-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
 }
 
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(94 114 228 / var(--tw-bg-opacity));
+}
+/* .bg-blue-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+} */
+.bg-fuchsia-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 70 239 / var(--tw-bg-opacity));
+}
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+.bg-lime-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(132 204 22 / var(--tw-bg-opacity));
+}
+.bg-green-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+
+.bg-blue-panel {
+  --tw-text-opacity: 1;
+  background-color: rgb(0 86 179 / var(--tw-bg-opacity));
 }
 
 .bg-white {
@@ -1916,6 +1976,10 @@ h6 {
   background-color: rgb(245 57 57 / 0.3);
 }
 
+.bg-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
 .bg-slate-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(52 71 103 / var(--tw-bg-opacity));
@@ -2071,6 +2135,9 @@ h6 {
 .to-zinc-700 {
   --tw-gradient-to: #212529;
 }
+.to-rosa-400 {
+  --tw-gradient-to: #fb7185;
+}
 
 .to-slate-300 {
   --tw-gradient-to: #a8b8d8;
@@ -2078,6 +2145,9 @@ h6 {
 
 .to-violet-500 {
   --tw-gradient-to: #825ee4;
+}
+.to-sky-500 {
+  --tw-gradient-to: #0EA5E9;
 }
 
 .to-orange-600 {
@@ -2202,19 +2272,34 @@ h6 {
   padding: 0.75rem;
 }
 
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-.py-2\.7 {
-  padding-top: 0.675rem;
-  padding-bottom: 0.675rem;
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .px-4 {
@@ -2222,19 +2307,9 @@ h6 {
   padding-right: 1rem;
 }
 
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.px-0 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .px-2\.5 {
@@ -2247,6 +2322,37 @@ h6 {
   padding-right: 0.5rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.py-2\.7 {
+  padding-top: 0.675rem;
+  padding-bottom: 0.675rem;
+}
+
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -2255,16 +2361,6 @@ h6 {
 .py-1\.2 {
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
-}
-
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 
 .py-2\.2 {
@@ -2277,15 +2373,6 @@ h6 {
   padding-bottom: 0.625rem;
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
 
 .py-3\.5 {
   padding-top: 0.875rem;
@@ -2302,15 +2389,6 @@ h6 {
   padding-bottom: 0.4375rem;
 }
 
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
-.px-24 {
-  padding-left: 6rem;
-  padding-right: 6rem;
-}
 
 .py-12 {
   padding-top: 3rem;
@@ -2442,6 +2520,11 @@ h6 {
 .pb-56 {
   padding-bottom: 14rem;
 }
+.pb-48 {
+  padding-bottom: 12rem;
+}
+
+
 
 .pl-7 {
   padding-left: 1.75rem;
@@ -2629,6 +2712,24 @@ h6 {
   --tw-text-opacity: 1;
   color: rgb(94 114 228 / var(--tw-text-opacity));
 }
+.text-lime-500 {
+  --tw-text-opacity: 1;
+  color: rgb(132 204 22 / var(--tw-text-opacity));
+}
+.text-blue-700 {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+
+.text-blue-800 {
+  --tw-text-opacity: 1;
+  color: rgb(30 64 175 / var(--tw-text-opacity));
+}
+
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity));
+}
 
 .text-orange-500 {
   --tw-text-opacity: 1;
@@ -2674,6 +2775,20 @@ h6 {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
+.text-purple-500 {
+  --tw-text-opacity: 1;
+  color: rgba(159, 122, 234, var(--tw-text-opacity));
+}
+.text-fuchsia-500 {
+  --tw-text-opacity: 1;
+  color: rgba(217, 70, 239, var(--tw-text-opacity));
+}
+
+.text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(234	179	8 / var(--tw-text-opacity));
+}
+
 
 .text-inherit {
   color: inherit;
@@ -2696,6 +2811,10 @@ h6 {
 .text-gray-200 {
   --tw-text-opacity: 1;
   color: rgb(233 236 239 / var(--tw-text-opacity));
+}
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -3989,6 +4108,12 @@ h6 {
   .md\:w-4\/12 {
     width: 33.333333%;
   }
+  .md\:w-3\/12 {
+    width: 25%;
+  }
+  .md\:w-2\/12 {
+    width: 16.666666%;
+  }
 
   .md\:w-1\/12 {
     width: 8.333333%;
@@ -3996,6 +4121,9 @@ h6 {
 
   .md\:w-11\/12 {
     width: 91.666667%;
+  }
+  .md\:w-10\/12 {
+    width: 83.333333%;
   }
 
   .md\:flex-0 {
