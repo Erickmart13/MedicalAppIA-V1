@@ -50,7 +50,7 @@
     <!-- Popper -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Main Styling -->
-    <link href="../assets/css/argon-dashboard-tailwind.css?v=1.0.1" rel="stylesheet" />
+    
     @vite('resources/css/argon-dashboard-tailwind.css')
   </head>
 
@@ -807,11 +807,14 @@
     </div>
   </body>
   <!-- plugin for charts  -->
-  <script src="../assets/js/plugins/chartjs.min.js" async></script>
+  {{-- <script src="../assets/js/plugins/chartjs.min.js" async></script>
   <!-- plugin for scrollbar  -->
   <script src="../assets/js/plugins/perfect-scrollbar.min.js" async></script>
   <!-- main script file  -->
-  <script src="../assets/js/argon-dashboard-tailwind.js?v=1.0.1" async></script>
+  <script src="../assets/js/argon-dashboard-tailwind.js?v=1.0.1" async></script> --}}
+  @vite('resources/js/plugins/chartjs.min.js')
+  @vite('resources/js/plugins/perfect-scrollbar.min.js')
+  @vite('resources/js/argon-dashboard-tailwind.js')
 
   
 

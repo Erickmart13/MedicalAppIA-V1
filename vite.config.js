@@ -8,7 +8,11 @@ export default defineConfig({
                 // 'resources/css/app.css',
                 // 'resources/js/app.js',
                 'resources/css/argon-dashboard-tailwind.css',
+                           'resources/js/plugins/chartjs.min.js',
+  'resources/js/plugins/perfect-scrollbar.min.js',
                 'resources/js/argon-dashboard-tailwind.js',
+
+     
             ],
             refresh: true,
         }),

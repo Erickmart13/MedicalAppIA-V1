@@ -14,6 +14,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+window.page = window.location.pathname.split("/").pop().split(".")[0];
+
+
 var page = window.location.pathname.split("/").pop().split(".")[0];
 var aux = window.location.pathname.split("/");
 var to_build = (aux.includes('pages') || aux.includes('docs') ?'../':'./');
