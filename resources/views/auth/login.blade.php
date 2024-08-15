@@ -11,11 +11,11 @@
 
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-        
+
     <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
-    
-   
+
+
     <!-- Main Styling -->
     @vite('resources/css/argon-dashboard-tailwind.css')
 </head>
@@ -29,30 +29,29 @@
             <img src="{{ asset('/img/logo-ia.png') }}"
                 class="inline h-full max-w-full transition-all duration-200 dark:hidden ease-nav-brand max-h-12 mr-4"
                 alt="main_logo" />
-            <a class="py-1.75 ml-4 mr-4 text-white text-xl whitespace-nowrap lg:ml-0"
-                href="" target="_blank">
+            <a class="py-1.75 ml-4 mr-4 text-white text-xl whitespace-nowrap lg:ml-0" href="" target="_blank">
                 Sistema Hospitalario Isidro Ayora
             </a>
 
             <div navbar-menu
-    class="flex items-center flex-grow transition-all ease duration-350 lg-max:bg-white lg-max:max-h-0 lg-max:overflow-hidden basis-full rounded-2xl lg:flex lg:basis-auto">
-    <ul class="flex flex-col pl-0 mb-0 list-none lg-max:py-2 lg:flex-row xl:ml-auto ml-auto">
-        <li>
-            <a class="block px-2 py-1 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-100 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75 whitespace-nowrap"
-                href="{{ route('login') }}">
-                <i class="mr-1 text-lime-500 lg-max:text-slate-700 fas fa-user-circle opacity-40"></i>
-                Iniciar Sesión
-            </a>
-        </li>
-        <li>
-            <a class="block px-2 py-1 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-100 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75 whitespace-nowrap"
-                href="{{ route('register') }}">
-                <i class="mr-1 text-lime-500 lg-max:text-slate-700 fas fa-key opacity-40"></i>
-                Registrarse
-            </a>
-        </li>
-    </ul>
-</div>
+                class="flex items-center flex-grow transition-all ease duration-350 lg-max:bg-white lg-max:max-h-0 lg-max:overflow-hidden basis-full rounded-2xl lg:flex lg:basis-auto">
+                <ul class="flex flex-col pl-0 mb-0 list-none lg-max:py-2 lg:flex-row xl:ml-auto ml-auto">
+                    <li>
+                        <a class="block px-2 py-1 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-100 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75 whitespace-nowrap"
+                            href="{{ route('login') }}">
+                            <i class="mr-1 text-lime-500 lg-max:text-slate-700 fas fa-user-circle opacity-40"></i>
+                            Iniciar Sesión
+                        </a>
+                    </li>
+                    <li>
+                        <a class="block px-2 py-1 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-100 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75 whitespace-nowrap"
+                            href="{{ route('register') }}">
+                            <i class="mr-1 text-lime-500 lg-max:text-slate-700 fas fa-key opacity-40"></i>
+                            Registrarse
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
         </div>
     </nav>
@@ -62,8 +61,7 @@
         <section class="min-h-screen">
             <div
                 class="bg-top relative flex items-start pt-12 pb-48 m-4 overflow-hidden bg-cover min-h-50-screen rounded-xl ]">
-                <span
-                    class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-blue-panel"></span>
+                <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-blue-panel"></span>
                 <div class="container relative z-10">
                     <div class="flex flex-wrap justify-center -mx-3">
                         <div class="w-full max-w-full px-3 mx-auto mt-0 text-center lg:flex-0 shrink-0 lg:w-5/12">
@@ -77,82 +75,82 @@
             </div>
             <div class="container">
                 <div class="flex flex-wrap -mx-3 -mt-48 md:-mt-56 lg:-mt-48">
-                  <div class="w-full max-w-full px-3 mx-auto mt-0 md:flex-0 shrink-0 md:w-7/12 lg:w-5/12 xl:w-5/12">
-                    <div class="relative z-0 flex flex-col min-w-0 break-words bg-white border-0 shadow-xl rounded-2xl bg-clip-border">
-                      <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
-                        <h5>Ingresa tus credenciales</h5>
-                      </div>
-                      
-                      <div class="flex-auto p-6">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                          <!-- Email Address -->
-                          <div class="mb-4">
-                            <x-input-label for="email" :value="__('Correo')" />
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <i class="fas fa-envelope text-gray-300"></i>
-                                </span>
-                            <x-text-input
-                                class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full pl-9 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                id="email" placeholder="Ingresa tu correo electrónico"
-                                aria-label="Email" aria-describedby="email-addon" type="email"
-                                name="email" :value="old('email')" required autofocus
-                                autocomplete="username" />
+                    <div class="w-full max-w-full px-3 mx-auto mt-0 md:flex-0 shrink-0 md:w-7/12 lg:w-5/12 xl:w-5/12">
+                        <div
+                            class="relative z-0 flex flex-col min-w-0 break-words bg-white border-0 shadow-xl rounded-2xl bg-clip-border">
+                            <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
+                                <h5>Ingresa tus credenciales</h5>
                             </div>
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
+                            <div class="flex-auto p-6">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    <!-- Email Address -->
+                                    <div class="mb-4">
+                                        <x-input-label for="email" :value="__('Correo')" />
+                                        <div class="relative">
+                                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                                <i class="fas fa-envelope text-gray-300"></i>
+                                            </span>
+                                            <x-text-input
+                                                class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full pl-9 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                                id="email" placeholder="Ingresa tu correo electrónico"
+                                                aria-label="Email" aria-describedby="email-addon" type="email"
+                                                name="email" :value="old('email')" required autofocus
+                                                autocomplete="username" />
+                                        </div>
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="mt-4">
+                                        <x-input-label for="password" :value="__('Contraseña')" />
+                                        <div class="relative">
+                                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                                <i class="fas fa-lock text-gray-300"></i>
+                                            </span>
+                                            <x-text-input id="password"
+                                                class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full pl-9 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                                placeholder="Ingresa tu contraseña" aria-label="Password"
+                                                aria-describedby="password-addon" type="password" name="password"
+                                                required autocomplete="current-password" />
+                                        </div>
+                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                    </div>
+
+                                    <!-- Remember Me -->
+                                    <div class="block mt-4">
+                                        <label for="remember_me" class="inline-flex items-center">
+                                            <input id="remember_me" type="checkbox"
+                                                class="h-4 w-4 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
+                                                name="remember">
+                                            <span
+                                                class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Recuérdame') }}</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center justify-end mt-4">
+
+
+                                        <x-primary-button
+                                            class="inline-block px-5 py-2.5 mt-6 mb-2 font-bold text-center text-white align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:-translate-y-px hover:shadow-xs leading-normal text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25 bg-gradient-to-tl from-zinc-800 to-zinc-700 hover:border-slate-700 hover:bg-slate-700 hover:text-white">
+                                            {{ __('Iniciar') }}
+                                        </x-primary-button>
+
+                                    </div>
+                                    @if (Route::has('password.request'))
+                                        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                                            href="{{ route('password.request') }}">
+                                            {{ __('Olvidaste tu contraseña?') }}
+                                        </a>
+                                    @endif
+                                </form>
+
+                            </div>
                         </div>
-
-                        <!-- Password -->
-                        <div class="mt-4">
-                            <x-input-label for="password" :value="__('Contraseña')" />
-                            <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <i class="fas fa-lock text-gray-300"></i>
-                            </span>
-                            <x-text-input id="password"
-                            
-                                class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full pl-9 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                placeholder="Ingresa tu contraseña" aria-label="Password"
-                                aria-describedby="password-addon" type="password" name="password" required
-                                autocomplete="current-password" />
-                            </div>   
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                        </div>
-
-                        <!-- Remember Me -->
-                        <div class="block mt-4">
-                            <label for="remember_me" class="inline-flex items-center">
-                                <input id="remember_me" type="checkbox"
-                                    class="h-4 w-4 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
-                                    name="remember">
-                                <span
-                                    class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Recuérdame') }}</span>
-                            </label>
-                        </div>
-
-                        <div class="flex items-center justify-end mt-4">
-
-
-                            <x-primary-button
-                                class="inline-block px-5 py-2.5 mt-6 mb-2 font-bold text-center text-white align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:-translate-y-px hover:shadow-xs leading-normal text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25 bg-gradient-to-tl from-zinc-800 to-zinc-700 hover:border-slate-700 hover:bg-slate-700 hover:text-white">
-                                {{ __('Iniciar') }}
-                            </x-primary-button>
-
-                        </div>
-
-                        </form>
-                        @if (Route::has('password.request'))
-                                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                                        href="{{ route('password.request') }}">
-                                        {{ __('Olvidaste tu contraseña?') }}
-                                    </a>
-                                @endif
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
         </section>
         <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
         <footer class="py-12">
@@ -173,14 +171,14 @@
         </footer>
         <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
     </main>
-    
+
 </body>
- <!-- plugin for charts  -->
- @vite('resources/js/plugins/chartjs.min.js')
- <!-- plugin for scrollbar  -->
- @vite('resources/js/plugins/perfect-scrollbar.min.js')
- <!-- main script file  -->
- @vite('resources/js/argon-dashboard-tailwind.js')
+<!-- plugin for charts  -->
+@vite('resources/js/plugins/chartjs.min.js')
+<!-- plugin for scrollbar  -->
+@vite('resources/js/plugins/perfect-scrollbar.min.js')
+<!-- main script file  -->
+@vite('resources/js/argon-dashboard-tailwind.js')
 
 
 </html>
