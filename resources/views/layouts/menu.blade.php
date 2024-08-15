@@ -20,7 +20,7 @@
             
             
 
-            @if ((auth()->user()->role == 'admin'))
+            @if ((auth()->user()->role == ''))
             <li class="w-full mt-4">
                 <h6
                     class="text-blue-700 pl-6 ml-2 text-sm font-bold leading-tight uppercase dark:text-white opacity-90">
@@ -42,7 +42,7 @@
             @endif
 
             <li class="w-full mt-4">
-                @if (auth()->user()->role == 'admin')
+                @if (auth()->user()->role == '')
                     <h6
                         class="text-blue-700 pl-6 ml-2 text-sm font-bold leading-tight uppercase dark:text-white opacity-90">
                         GESTIÓN</h6>

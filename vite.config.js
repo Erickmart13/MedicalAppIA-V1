@@ -5,8 +5,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                // 'resources/css/app.css',
-                // 'resources/js/app.js',
+                'resources/css/app.css',
+                 'resources/js/app.js',
                 'resources/css/argon-dashboard-tailwind.css',
                            'resources/js/plugins/chartjs.min.js',
   'resources/js/plugins/perfect-scrollbar.min.js',
