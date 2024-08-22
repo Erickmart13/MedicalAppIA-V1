@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -41,6 +42,17 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        // Obtener el rol 'patient' de la tabla roles
+        $patientRole = Role::where('name', 'patient')->first();
+
+        if ($patientRole) {
+            // Asignar el rol 'patient' al usuario registrado
+            $user->roles()->attach($patientRole->id);
+        } else {
+            // Manejar el caso donde el rol no existe
+            return redirect()->back()->withErrors(['error' => 'Role not found.']);
+        }
 
         event(new Registered($user));
 
