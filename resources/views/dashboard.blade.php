@@ -52,7 +52,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 @extends('layouts.app')
-
+@section('page-title')
+Dashboard
+@endsection
 @section('content')
 <!-- cards -->
 <div class="w-full px-6 py-6 mx-auto">
