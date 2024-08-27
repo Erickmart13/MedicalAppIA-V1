@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->integer('age');
             $table->enum('gender', ['male', 'female']);
+            $table->unsignedBigInteger('user_id'); // Asegúrate de que esta línea esté presente
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

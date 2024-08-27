@@ -86,21 +86,36 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
 
-                                    <!-- Name -->
+                                    {{-- <!--First Name -->
                                     <div>
                                         <div class="mb-4">
-                                            <x-input-label for="name" :value="__('Nombre')" />
+                                            <x-input-label for="first_name" :value="__('Nombre')" />
                                             <div class="relative">
                                                 <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                                                     <i class="fas fa-user text-gray-300"></i>
                                                 </span>
                                             <x-text-input class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full pl-9 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                             id="name" type="text" placeholder="Ingresa tu nombre"
-                                                name="name" :value="old('name')" required autofocus
-                                                autocomplete="name" />
+                                             id="first_name" type="text" placeholder="Ingresa tu nombre"
+                                                name="first_name" :value="old('first_name')" required autofocus
+                                                autocomplete="first_name" />
                                             </div>
-                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                                         </div>
+                                    <!--Last Name -->
+                                    <div>
+                                        <div class="mb-4">
+                                            <x-input-label for="last_name" :value="__('Apellido')" />
+                                            <div class="relative">
+                                                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                                    <i class="fas fa-user text-gray-300"></i>
+                                                </span>
+                                            <x-text-input class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full pl-9 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                             id="last_name" type="text" placeholder="Ingresa tu apellido"
+                                                name="last_name" :value="old('last_name')" required autofocus
+                                                autocomplete="last_name" />
+                                            </div>
+                                            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+                                        </div> --}}
 
                                         <!-- Email Address -->
                                         <div class="mb-4">
@@ -158,7 +173,7 @@
 
                                             <x-primary-button
                                                 class="inline-block px-5 py-2.5 mt-6 mb-2 font-bold text-center text-white align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:-translate-y-px hover:shadow-xs leading-normal text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25 bg-gradient-to-tl from-zinc-800 to-zinc-700 hover:border-slate-700 hover:bg-slate-700 hover:text-white">
-                                                {{ __('Registrarse') }}
+                                                {{ __('Siguiente') }}
                                             </x-primary-button>
 
                                         </div>
@@ -170,6 +185,7 @@
                                 
                                             
                                         </div>
+                                        
 
                                 </form>
                                 

@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\AdditionalInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+    Route::get('additional-info', [AdditionalInfoController::class, 'create'])
+        ->name('additional-info.create');
+
+    Route::post('additional-info', [AdditionalInfoController::class, 'store'])
+        ->name('additional-info.store');
+
