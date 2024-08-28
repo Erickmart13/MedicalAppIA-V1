@@ -4,9 +4,7 @@
             {{ __('Actualizar contraseña') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Asegúrese de que su cuenta use una contraseña larga y aleatoria para mantenerse segura.') }}
-        </p>
+        <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Contraseña</p>
     </header>
 
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">

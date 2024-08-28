@@ -25,7 +25,11 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profilePerson', [ProfileController::class, 'editPerson'])->name('profilePerson.edit');
+  
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profilePerson', [ProfileController::class, 'updatePerson'])->name('profilePerson.update');
+    
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
@@ -38,3 +42,6 @@ require __DIR__.'/auth.php';
     Route::post('additional-info', [AdditionalInfoController::class, 'store'])
         ->name('additional-info.store');
 
+
+
+        

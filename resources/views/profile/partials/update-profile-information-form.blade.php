@@ -1,17 +1,17 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Información de Usuario') }}
+            {{ __('Actualizar Información de Usuario') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Actualizar tu nombre de usuario y correo electrónico') }}
-        </p>
+        <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Información de usuario</p>
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
+    {{-- Formulario user --}}
+
 
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
@@ -30,8 +30,6 @@
                     <x-input-error class="mt-2" :messages="$errors->get('user_name')" />
                 </div>
             </div>
-
-
 
             <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                 <div class="mb-4">
@@ -79,4 +77,7 @@
 
 
     </form>
+
 </section>
+
+
