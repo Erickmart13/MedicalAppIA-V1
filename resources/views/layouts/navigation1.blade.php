@@ -42,7 +42,7 @@
                               <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-tailwind/img/team-3.jpg"
                                     alt="avatar image"
                                     class="inline-flex items-center justify-center w-12 h-12 mr-2 text-white transition-all duration-200 ease-in-out text-sm rounded-xl" />
-                              <span class="d-sm-inline d-none">{{ Auth::user()->name }}</span>
+                              <span class="d-sm-inline d-none">{{ Auth::user()->user_name}}</span>
                           </a>
 
                           <ul dropdown-menu

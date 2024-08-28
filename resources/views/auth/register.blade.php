@@ -86,22 +86,22 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
 
-                                    {{-- <!--First Name -->
+                                     <!--First Name -->
                                     <div>
                                         <div class="mb-4">
-                                            <x-input-label for="first_name" :value="__('Nombre')" />
+                                            <x-input-label for="user_name" :value="__('Nombre de usuario')" />
                                             <div class="relative">
                                                 <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                                                     <i class="fas fa-user text-gray-300"></i>
                                                 </span>
                                             <x-text-input class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full pl-9 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                             id="first_name" type="text" placeholder="Ingresa tu nombre"
-                                                name="first_name" :value="old('first_name')" required autofocus
-                                                autocomplete="first_name" />
+                                             id="user_name" type="text" placeholder="Ingresa tu nombre de usuario"
+                                                name="user_name" :value="old('user_name')" required autofocus
+                                                autocomplete="user_name" />
                                             </div>
-                                            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+                                            <x-input-error :messages="$errors->get('user_name')" class="mt-2" />
                                         </div>
-                                    <!--Last Name -->
+                                   {{-- <!--Last Name -->
                                     <div>
                                         <div class="mb-4">
                                             <x-input-label for="last_name" :value="__('Apellido')" />

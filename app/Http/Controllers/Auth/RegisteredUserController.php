@@ -32,7 +32,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $validated=$request->validate([
-            // 'first_name' => ['required', 'string', 'max:255'],
+            'user_name' => ['required', 'string', 'max:255'],
             // 'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -43,6 +43,8 @@ class RegisteredUserController extends Controller
 
         // Autenticación del usuario para redirigir
         Auth::attempt([
+
+            'user_name' => $validated['user_name'],
             'email' => $validated['email'],
             'password' => $validated['password'],
         ]);
