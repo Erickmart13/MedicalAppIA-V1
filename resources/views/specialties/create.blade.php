@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-title')
-Nueva especialidad
+Crear especialidad
 @endsection
 @section('content')
     <div class="flex flex-wrap -mx-3">

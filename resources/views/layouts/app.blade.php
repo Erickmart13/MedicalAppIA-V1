@@ -97,11 +97,19 @@
 
     </main>
     @include('layouts.configurator')
-  </body>
-  <!-- plugin for charts  -->
+
+
+
+    <!-- plugin for charts  -->
 @vite('resources/js/plugins/chartjs.min.js')
+
 <!-- plugin for scrollbar  -->
 @vite('resources/js/plugins/perfect-scrollbar.min.js')
 <!-- main script file  -->
-@vite('resources/js/argon-dashboard-tailwind.js')
+{{-- @vite('resources/js/argon-dashboard-tailwind.js') --}}
+@vite('resources/js/app.js')
+  
+
+</body>
+  
 </html>

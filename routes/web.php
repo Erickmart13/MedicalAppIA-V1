@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AdditionalInfoController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialtyController;
 
 /*
@@ -46,5 +47,8 @@ require __DIR__.'/auth.php';
 //Rutas especialidades
 
 Route::resource('/specialties',SpecialtyController::class);
+
+//Rutas pacientes
+Route::resource('/patients',PatientController::class);
 
         
