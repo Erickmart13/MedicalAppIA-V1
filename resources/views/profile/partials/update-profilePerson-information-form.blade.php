@@ -95,12 +95,12 @@
             </div>
             <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                 <div class="mb-4">
-                    <label for="city_of_residence"
+                    <label for="city_id"
                         class="inline-block mb-2 ml-1 font-bold text-sm text-slate-700 dark:text-white/80">Ciudad de Residencia</label>
-                    <x-text-input id="city_of_residence" name="city_of_residence" type="text"
+                    <x-text-input id="city_id" name="city_id" type="text"
                         class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
-                        :value="old('city_of_residence', $person->city_of_residence)" required autofocus autocomplete="city_of_residence" />
-                    <x-input-error class="mt-2" :messages="$errors->get('city_of_residence')" />
+                        :value="old('city_id', $person->city->name)" required autofocus autocomplete="city_id" />
+                    <x-input-error class="mt-2" :messages="$errors->get('city_id')" />
                 </div>
             </div>
             <div class="w-full max-w-full px-3 shrink-0 md:w-12/12 md:flex-0">

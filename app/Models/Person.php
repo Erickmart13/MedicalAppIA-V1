@@ -13,11 +13,16 @@ class Person extends Model
     use HasFactory;
     protected $fillable = [
         'cedula', 'first_name', 'last_name', 'email', 'phone', 'address', 
-        'city_of_residence', 'date_of_birth', 'age', 'gender', 'user_id'
+        'city_id', 'date_of_birth', 'age', 'gender', 'user_id'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }

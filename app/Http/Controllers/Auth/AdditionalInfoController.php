@@ -36,7 +36,7 @@ class AdditionalInfoController extends Controller
             'cedula' => 'required|string|min:10|unique:persons,cedula',
             'address' => 'required|string',
             'phone' => 'required|numeric|digits:10',
-            'city_of_residence' => 'required|string',
+            'city_id' => 'required|string',
             'date_of_birth' => 'required|date',
             'age' => 'required|numeric',
             'gender' => 'required|string'
@@ -48,7 +48,7 @@ class AdditionalInfoController extends Controller
             'cedula.required' => 'La cédula es obligatoria',
             'address.required' => 'La dirección es obligatoria',
             'phone.required' => 'El número de teléfono es obligatorio',
-            'city_of_residence.required' => 'La ciudad de residencia es obligatoria',
+            'city_id.required' => 'La ciudad de residencia es obligatoria',
             'date_of_birth.required' => 'La fecha de nacimiento es obligatoria',
             'age.required' => 'La edad es obligatoria.',
             'gender.required' => 'El género es obligatorio'
@@ -85,10 +85,10 @@ class AdditionalInfoController extends Controller
             'cedula' => $request->cedula,
             'address' => $request->address,
             'phone' => $request->phone,
-            'city_of_residence' => $request->city_of_residence,
             'date_of_birth' => $request->date_of_birth,
             'age' => $request->age,
             'gender' => $request->gender,
+            'city_id' =>$request->city_id,
             'user_id' => $user->id,
         ]);
 

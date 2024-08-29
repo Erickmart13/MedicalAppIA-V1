@@ -15,8 +15,8 @@
     <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 
-<!--     Flatpickr     -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!--     Flatpickr     -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Main Styling -->
     @vite('resources/css/argon-dashboard-tailwind.css')
 </head>
@@ -95,9 +95,8 @@
                                             <div class="mb-4">
                                                 <label class="block text-gray-700 text-sm font-bold mb-2"
                                                     for="first_name">Nombre</label>
-                                                <input id="first_name" placeholder="Ingrese tu nombre"
-                                                    type="text" name="first_name" required
-                                                    value="{{ old('first_name') }}"
+                                                <input id="first_name" placeholder="Ingrese tu nombre" type="text"
+                                                    name="first_name" required value="{{ old('first_name') }}"
                                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                             </div>
                                         </div>
@@ -105,9 +104,8 @@
                                             <div class="mb-4">
                                                 <label class="block text-gray-700 text-sm font-bold mb-2"
                                                     for="last_name">Apellido</label>
-                                                <input id="last_name" placeholder="Ingrese tu apellido"
-                                                    type="text" name="last_name" required
-                                                    value="{{ old('last_name') }}"
+                                                <input id="last_name" placeholder="Ingrese tu apellido" type="text"
+                                                    name="last_name" required value="{{ old('last_name') }}"
                                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                             </div>
                                         </div>
@@ -118,8 +116,7 @@
                                                 <label class="block text-gray-700 text-sm font-bold mb-2"
                                                     for="cedula">Cédula</label>
 
-                                                <input id="cedula"
-                                                    placeholder="Ingrese tu número de cédula"
+                                                <input id="cedula" placeholder="Ingrese tu número de cédula"
                                                     type="text" name="cedula" required value="{{ old('cedula') }}"
                                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                             </div>
@@ -180,8 +177,7 @@
                                             <div class="mb-4">
                                                 <label class="block text-gray-700 text-sm font-bold mb-2"
                                                     for="phone">Teléfono</label>
-                                                <input id="phone"
-                                                    placeholder="Ingrese tu número de teléfono"
+                                                <input id="phone" placeholder="Ingrese tu número de teléfono"
                                                     type="text" name="phone" required
                                                     value="{{ old('phone') }}"
                                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
@@ -190,18 +186,19 @@
                                         <div class="w-full max-w-full px-3 shrink-0 md:w-5/12 md:flex-0">
                                             <div class="mb-4">
                                                 <label class="block text-gray-700 text-sm font-bold mb-2"
-                                                    for="city_of_residence">Ciudad
+                                                    for="city_id">Ciudad
                                                     de
                                                     residencia</label>
-                                                <select id="city_of_residence" name="city_of_residence" required
+                                                <select id="city_id" name="city_id" required
                                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
-                                                    <option value="{{ old('city_of_residence') }}" disabled selected>
-                                                        Seleccione la ciudad
+                                                    <option value="" disabled selected>Seleccione la ciudad
                                                     </option>
                                                     @foreach ($cities as $city)
-                                                    <option value="{{ $city->name }}">{{ $city->name }}</option>
-                                                @endforeach
+                                                        <option value="{{ $city->id }}">{{ $city->name }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
+
 
 
 
@@ -219,11 +216,11 @@
                                             </div>
                                         </div>
 
-                                       
- 
-                                       
-                                        
-                                        
+
+
+
+
+
                                     </div>
                                     <div class="flex items-center justify-end mt-4">
 
@@ -263,7 +260,7 @@
         </footer>
         <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
     </main>
-   
+
 </body>
 
 <!-- plugin for flatpickr  -->
@@ -289,14 +286,14 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            flatpickr("#date_of_birth", {
-                locale: "es",
-                dateFormat: "Y-m-d"
-            });
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        flatpickr("#date_of_birth", {
+            locale: "es",
+            dateFormat: "Y-m-d"
         });
-    </script>
+    });
+</script>
 
 
 

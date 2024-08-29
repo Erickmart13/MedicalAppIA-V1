@@ -19,12 +19,17 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('address');
-            $table->string('city_of_residence');
+           
             $table->date('date_of_birth');
             $table->integer('age');
             $table->enum('gender', ['male', 'female']);
             $table->unsignedBigInteger('user_id'); // Asegúrate de que esta línea esté presente
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->unsignedBigInteger('city_id')->nullable(); // Permite valores nulos si lo necesitas
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null'); // Mantén la integridad referencial
+
+
             $table->timestamps();
         });
     }
