@@ -67,7 +67,7 @@ class AdditionalInfoController extends Controller
         $user = User::create(array_merge($userData, ['password' => Hash::make($userData['password'])]));
 
         // Obtener el rol 'patient' de la tabla roles
-        $patientRole = Role::where('name', 'patient')->first();
+        $patientRole = Role::where('name', 'admin')->first();
 
         if ($patientRole) {
             // Asignar el rol 'patient' al usuario registrado

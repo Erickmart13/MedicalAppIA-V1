@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AdditionalInfoController;
+use App\Http\Controllers\SpecialtyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ require __DIR__.'/auth.php';
     Route::post('additional-info', [AdditionalInfoController::class, 'store'])
         ->name('additional-info.store');
 
+//Rutas especialidades
 
+Route::resource('/specialties',SpecialtyController::class);
 
         
