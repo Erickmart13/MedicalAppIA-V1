@@ -24,6 +24,8 @@ class PatientController extends Controller
      */
     public function create()
     {
+
+        
         $cities=City::all();
         return view('patients.create', compact('cities'));
     }

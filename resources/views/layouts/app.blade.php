@@ -53,26 +53,28 @@
 -->
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/medicina-icon.png')}}" />
-    <link rel="icon" type="image/png" href="{{asset('img/medicina-icon.png')}}" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/medicina-icon.png') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('img/medicina-icon.png') }}" />
     <title>Sistema Hospitalario Isidro Ayora</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <!-- Nucleo Icons -->
-    <link href="{{asset('css/nucleo-icons.css')}}" rel="stylesheet" />
-    <link href="{{asset('css/nucleo-svg.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- Popper -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Main Styling -->
     @vite('resources/css/argon-dashboard-tailwind.css')
-  </head>
+</head>
 
-  <body class="m-0 font-sans text-base antialiased font-normal dark:bg-slate-900 leading-default bg-gray-50 text-slate-500">
+<body
+    class="m-0 font-sans text-base antialiased font-normal dark:bg-slate-900 leading-default bg-gray-50 text-slate-500">
     <div class="absolute w-full bg-blue-panel dark:hidden min-h-75"></div>
 
     <!-- sidenav  -->
@@ -81,26 +83,27 @@
     <!-- end sidenav -->
 
     <main class="relative h-full max-h-screen transition-all duration-200 ease-in-out xl:ml-68 rounded-xl">
- <!-- Navbar -->
- @include('layouts.navigation1')
- <!-- end Navbar -->
- 
- <div class="w-full px-6 py-6 mx-auto"> 
+        <!-- Navbar -->
+        @include('layouts.navigation1')
+        <!-- end Navbar -->
 
-    @yield('content')
+        <div class="w-full px-6 py-6 mx-auto">
+
+            @yield('content')
 
 
-<!-- footer -->
-@include('layouts.footer')
-<!-- end footer -->
-</div>
+            <!-- footer -->
+            @include('layouts.footer')
+            <!-- end footer -->
+        </div>
 
     </main>
     @include('layouts.configurator')
 
+</body>
 
 
-    <!-- plugin for charts  -->
+<!-- plugin for charts  -->
 @vite('resources/js/plugins/chartjs.min.js')
 
 <!-- plugin for scrollbar  -->
@@ -108,8 +111,5 @@
 <!-- main script file  -->
 {{-- @vite('resources/js/argon-dashboard-tailwind.js') --}}
 @vite('resources/js/app.js')
-  
 
-</body>
-  
 </html>
