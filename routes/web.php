@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Auth\AdditionalInfoController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecialtyController;
+use App\Http\Controllers\Auth\AdditionalInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,4 +52,8 @@ Route::resource('/specialties',SpecialtyController::class);
 //Rutas pacientes
 Route::resource('/patients',PatientController::class);
 
-        
+// // Ruta para mostrar el formulario de creación de usuario
+// Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+
+// // Ruta para almacenar el usuario recién creado
+// Route::post('/users', [UserController::class, 'store'])->name('users.store');
