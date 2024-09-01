@@ -25,7 +25,7 @@
             <div>
 
 
-                <form action="{{ url('/pacientes') }}" method="POST"
+                <form action="{{ url('/patients') }}" method="POST"
                     class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border p-6">
                     @csrf
                     <div class="mb-4">
@@ -118,10 +118,10 @@
                     <div class="flex flex-wrap -mx-3">
                         <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                             <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="person_email">Correo
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Correo
                                     electrónico</label>
                                 <input id="person_email" placeholder="Ingrese el correo electrónico del paciente"
-                                    type="email" name="person_email" required value="{{ old('person_email') }}"
+                                    type="email" name="email" required value="{{ old('email') }}"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                             </div>
                         </div>
@@ -180,10 +180,10 @@
                         </div>
                         <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                             <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="user_email">Correo
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Correo
                                     electrónico</label>
                                 <input id="user_email" placeholder="Ingrese el correo electrónico del paciente"
-                                    type="email" name="user_email" required value="{{ old('user_email') }}"
+                                    type="email" name="email" required value="{{ old('email') }}"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                             </div>
                         </div>
