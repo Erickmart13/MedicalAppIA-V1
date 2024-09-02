@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             CitiesTableSeeder::class,
             RoleTableSeeder::class,
             SpecialtiesTableSeeder::class,
+            
+            AdminUserSeeder::class,
+            PatientsTableSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 
