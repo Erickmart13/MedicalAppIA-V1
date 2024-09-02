@@ -78,7 +78,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $patient->cedula }}</h6>
+                                                        {{ $patient->person->cedula}}</h6>
 
                                                 </div>
                                             </div>
@@ -90,7 +90,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $patient->first_name }}</h6>
+                                                        {{ $patient->person->first_name }}</h6>
 
                                                 </div>
                                             </div>
@@ -102,7 +102,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $patient->last_name }}</h6>
+                                                        {{ $patient->person->last_name }}</h6>
 
                                                 </div>
                                             </div>
@@ -114,7 +114,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $patient->age }}</h6>
+                                                        {{ $patient->person->age }}</h6>
 
                                                 </div>
                                             </div>
@@ -126,7 +126,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $patient->email }}</h6>
+                                                        {{ $patient->person->email }}</h6>
 
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@
                                             class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                             <h6
                                                 class="mb-0 text-sm  leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                {{ $patient->phone }}</h6>
+                                                {{ $patient->person->phone }}</h6>
 
                                         </td>
 
@@ -144,15 +144,22 @@
                                         <td
                                             class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
 
-                                            <form action="{{ url('/pacientes/' . $patient->id) }}" method="POST">
+                                            <form action="{{ url('/patient/' . $patient->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ url('/pacientes/' . $patient->id . '/show') }}"
-                                                    class="bg-lime-500 from-emerald-500 to-teal-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold leading-none text-white">Ver</a>
-                                                <a href="{{ url('/pacientes/' . $patient->id . '/edit') }}"
-                                                    class="bg-blue-500 from-emerald-500 to-teal-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold leading-none text-white">Editar</a>
+
+                                                <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700"
+                                                    href="{{ url('/patient/' . $patient->id) }}"><i
+                                                        class="mr-2 far fa-eye text-blue-500" aria-hidden="true"></i></a>
+                                                <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700"
+                                                    href="{{ url('/patient/' . $patient->id . '/edit') }}"><i
+                                                        class="mr-2 fas fa-pencil-alt text-lime-500"
+                                                        aria-hidden="true"></i></a>
+
                                                 <button type="submit"
-                                                    class="bg-red-500  from-emerald-500 to-teal-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold leading-none text-white">Eliminar</a>
+                                                    class="relative z-10 inline-block px-2 py-2.5 mb-0 font-bold text-center text-transparent align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 bg-gradient-to-tl from-red-600 to-orange-600 hover:-translate-y-px active:opacity-85 bg-x-25 bg-clip-text"><i
+                                                        class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-orange-600 bg-x-25 bg-clip-text"></i></a>
+
 
                                             </form>
 
