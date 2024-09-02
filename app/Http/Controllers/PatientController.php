@@ -127,7 +127,13 @@ class PatientController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $patient = User::findOrFail($id);
+        $cities = City::all();
+        $selectedCity = $patient->person->city_id;
+
+
+        // Retornar la vista de detalles con la información del doctor
+        return view('patients.show', compact('patient', 'cities', 'selectedCity'));
     }
 
     /**

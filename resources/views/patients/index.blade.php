@@ -144,15 +144,15 @@
                                         <td
                                             class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
 
-                                            <form action="{{ url('/patient/' . $patient->id) }}" method="POST">
+                                            <form action="{{ url('/patients/' . $patient->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
                                                 <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700"
-                                                    href="{{ url('/patient/' . $patient->id) }}"><i
+                                                    href="{{ url('/patients/' . $patient->id) }}"><i
                                                         class="mr-2 far fa-eye text-blue-500" aria-hidden="true"></i></a>
                                                 <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700"
-                                                    href="{{ url('/patient/' . $patient->id . '/edit') }}"><i
+                                                    href="{{ url('/patients/' . $patient->id . '/edit') }}"><i
                                                         class="mr-2 fas fa-pencil-alt text-lime-500"
                                                         aria-hidden="true"></i></a>
 
