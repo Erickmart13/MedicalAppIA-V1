@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\Auth\AdditionalInfoController;
 
@@ -54,3 +55,5 @@ Route::resource('/patients', PatientController::class);
 
 //Rutas doctores
 Route::resource('/doctors', DoctorController::class);
+// Rutas horarios
+Route::resource('/schedules', ScheduleController::class);
