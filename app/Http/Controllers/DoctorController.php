@@ -142,7 +142,14 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $specialties = Specialty::all();
+        $doctor = User::findOrFail($id);
+        $cities = City::all();
+        $selectedCity = $doctor->person->city_id;
+        $selectedSpecialties = $doctor->specialties->pluck('id')->toArray();
+
+        // Retornar la vista de detalles con la información del doctor
+        return view('doctors.edit', compact('doctor', 'cities', 'selectedCity','specialties','selectedSpecialties'));
     }
 
     /**
