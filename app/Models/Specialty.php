@@ -14,4 +14,10 @@ class Specialty extends Model
         'active',
         
     ];
+
+     // Relación muchos a muchos con User
+     public function users()
+     {
+         return $this->belongsToMany(User::class, 'user_specialty', 'specialty_id', 'user_id');
+     }
 }

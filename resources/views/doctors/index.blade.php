@@ -10,7 +10,7 @@
 
                 <div class="flex items-center p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <h6 class="dark:text-white">Médicos</h6>
-                    <a href=" {{ url('/medicos/create') }}" class="inline-block px-2.5  py-1 ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-sm tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Nuevo médico</a>
+                    <a href=" {{ url('/doctors/create') }}" class="inline-block px-2.5  py-1 ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-sm tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Nuevo médico</a>
                     
                 </div>
                 <div>
@@ -47,18 +47,7 @@
                                     <th
                                         class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         Teléfono</th>
-                                    {{-- <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        Dirección</th>
-                                    <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        Ciudad de residencia</th>
-                                    <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        Fecha de nacimiento</th>
-                                    <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        Género</th> --}}
+                                   
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         Opciones</th>
@@ -74,7 +63,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $doctor->cedula }}</h6>
+                                                        {{ $doctor->person->cedula }}</h6>
 
                                                 </div>
                                             </div>
@@ -86,7 +75,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $doctor->first_name }}</h6>
+                                                        {{ $doctor->person->first_name }}</h6>
 
                                                 </div>
                                             </div>
@@ -98,7 +87,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $doctor->last_name }}</h6>
+                                                        {{ $doctor->person->last_name }}</h6>
 
                                                 </div>
                                             </div>
@@ -110,7 +99,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $doctor->email }}</h6>
+                                                        {{ $doctor->person->email }}</h6>
 
                                                 </div>
                                             </div>
@@ -119,7 +108,7 @@
                                             class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                             <h6
                                                 class="mb-0 text-sm  leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                {{ $doctor->phone }}</h6>
+                                                {{ $doctor->person->phone }}</h6>
 
                                         </td>
 
@@ -128,12 +117,12 @@
                                         <td
                                             class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
 
-                                            <form action="{{ url('/medicos/' . $doctor->id) }}" method="POST">
+                                            <form action="{{ url('/doctors/' . $doctor->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 
-                                                <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700" href="{{ url('/medicos/' . $doctor->id . '/show') }}"><i class="mr-2 far fa-eye text-blue-500" aria-hidden="true"></i></a>
-                                                <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700" href="{{ url('/medicos/' . $doctor->id . '/edit') }}"><i class="mr-2 fas fa-pencil-alt text-lime-500" aria-hidden="true"></i></a>
+                                                <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700" href="{{ url('/doctors/' . $doctor->id . '/show') }}"><i class="mr-2 far fa-eye text-blue-500" aria-hidden="true"></i></a>
+                                                <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700" href="{{ url('/doctors/' . $doctor->id . '/edit') }}"><i class="mr-2 fas fa-pencil-alt text-lime-500" aria-hidden="true"></i></a>
                                                 <button type="submit" class="relative z-10 inline-block px-2 py-2.5 mb-0 font-bold text-center text-transparent align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 bg-gradient-to-tl from-red-600 to-orange-600 hover:-translate-y-px active:opacity-85 bg-x-25 bg-clip-text" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-orange-600 bg-x-25 bg-clip-text"></i></a>
                                                
                                                 

@@ -54,4 +54,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Person::class);
     }
+
+    // Relación muchos a muchos con Specialty a través de specialty_user
+    public function specialties()
+    {
+        return $this->belongsToMany(Specialty::class, 'user_specialty', 'user_id', 'specialty_id');
+    }
 }
