@@ -13,19 +13,12 @@
                     <a href=" {{ url('/doctors') }}"
                         class="inline-block px-2.5  py-1  ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-red-500 border-0 rounded-lg shadow-md cursor-pointer text-sm tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Regresar</a>
                 </div>
-
-
             </div>
-
             <div>
-
-
                 <form action="{{ url('/doctors/' . $doctor->id) }}" method="POST"
                     class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border p-6">
                     @csrf
                     @method('PUT')
-
-
                     <div class="mb-4">
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
@@ -34,10 +27,7 @@
                         @endif
 
                         <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Información personal</p>
-
-
                     </div>
-
                     <div class="flex flex-wrap -mx-3">
                         <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                             <div class="mb-4">
@@ -102,7 +92,6 @@
                             </div>
                         </div>
                     </div>
-
                     <hr
                         class="h-px mx-0 my-4 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent " />
 
@@ -177,19 +166,7 @@
                             class="inline-block px-4 py-2  ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-lime-500 border-0 rounded-lg shadow-md cursor-pointer text-md tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Guardar
                             médico</button>
                     </div>
-
-
-
-
-
-
-
-
-
                 </form>
-
-
-
             </div>
         </div>
     @endsection
