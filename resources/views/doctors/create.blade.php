@@ -97,7 +97,7 @@
                         <div class="mb-4">
                             <label class="block text-gray-700 text-sm font-bold mb-2"
                                 for="specialties">Especialidades</label>
-                            <select id="specialties" name="specialties[]"
+                            <select id="my-multiselect" name="specialties[]"
                                 class="form-multiselect block w-full mt-1 rounded-lg border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 multiple>
                                 @foreach ($specialties as $specialty)

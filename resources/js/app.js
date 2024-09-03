@@ -8,6 +8,7 @@ import Alpine from 'alpinejs';
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
 import "./generate-age.js";
+import './choices';
 
 // Importa el archivo que inicializa DataTables
 import './datatables';

@@ -207,6 +207,18 @@ sup {
   overflow-x: auto; /* Agrega un scroll horizontal si es necesario */
 }
 
+/* Cambia el color de fondo de los elementos ya seleccionados */
+.choices__list--multiple .choices__item--selectable {
+  background-color: #1e6eb0 !important; /* Color de fondo deseado */
+  color: white !important; /* Color del texto */
+  border-radius: 8px !important; /* Bordes redondeados */
+  border-color:#000 !important;
+  margin-right: 5px !important; /* Espacio entre elementos */
+  font-size: 13px !important;  /* Tamaño del texto deseado */
+  line-height: 1.5 !important; /* Espaciado entre líneas */
+ 
+}
+
 
 
 

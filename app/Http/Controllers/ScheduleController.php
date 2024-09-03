@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Day;
+use App\Models\Time;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,9 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $days = Day::all();
+        $times = Time::all();
+        return view('schedules.create', compact('days','times'));
     }
 
     /**
