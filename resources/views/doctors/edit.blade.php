@@ -9,7 +9,7 @@
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
 
                 <div class="flex items-center p-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6 class="dark:text-white">Editar doctor</h6>
+                    <h6 class="dark:text-white">Editar médico</h6>
                     <a href=" {{ url('/doctors') }}"
                         class="inline-block px-2.5  py-1  ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-red-500 border-0 rounded-lg shadow-md cursor-pointer text-sm tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Regresar</a>
                 </div>
@@ -89,7 +89,8 @@
                                 <select required id="gender" name="gender"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
                                     required>
-                                    <option value="" {{ old('gender', $doctor->gender) == null ? 'select' : '' }}>
+                                    <option value="" disabled
+                                        {{ old('gender', $doctor->gender) == null ? 'select' : '' }}>
                                         Estado</option>
                                     <option value="male"{{ old('gender', $doctor->gender) == null ? 'select' : '' }}>
                                         Masculino

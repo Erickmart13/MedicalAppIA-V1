@@ -49,8 +49,8 @@
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="cedula">Cédula</label>
 
-                                <input id="cedula" placeholder="Ingrese el número de cédula del médico"
-                                    type="text" name="cedula" required value="{{ old('cedula', $patient->person) }}"
+                                <input id="cedula" placeholder="Ingrese el número de cédula del médico" type="text"
+                                    name="cedula" required value="{{ old('cedula', $patient->person) }}"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                             </div>
                         </div>
@@ -58,8 +58,8 @@
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="date_of_birth">Fecha de
                                     nacimiento</label>
-                                <input value="{{ old('date_of_birth', $patient->person) }}"
-                                    placeholder="Ingrese la fecha" type="text" id="date_of_birth" name="date_of_birth"
+                                <input value="{{ old('date_of_birth', $patient->person) }}" placeholder="Ingrese la fecha"
+                                    type="text" id="date_of_birth" name="date_of_birth"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
                                     required x-data x-init="flatpickr($el, { dateFormat: 'Y-m-d' })">
                             </div>
@@ -73,13 +73,14 @@
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                             </div>
                         </div>
+
                         <div class="w-full max-w-full px-3 shrink-0 md:w-2/12 md:flex-0">
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="gender">Género</label>
                                 <select required id="gender" name="gender"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
                                     required>
-                                    <option value="" 
+                                    <option value="" disabled
                                         {{ old('gender', $patient->gender) == null ? 'select' : '' }}>
                                         Estado</option>
                                     <option value="male"{{ old('gender', $patient->gender) == null ? 'select' : '' }}>
@@ -102,25 +103,24 @@
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Correo
                                     electrónico</label>
-                                <input id="email" placeholder="Ingrese el correo electrónico del médico"
-                                    type="text" name="email" required value="{{ old('email', $patient->person) }}"
+                                <input id="email" placeholder="Ingrese el correo electrónico del médico" type="text"
+                                    name="email" required value="{{ old('email', $patient->person) }}"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                             </div>
                         </div>
                         <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">Teléfono</label>
-                                <input id="phone" placeholder="Ingrese el número de teléfono del médico"
-                                    type="text" name="phone" required value="{{ old('phone', $patient->person) }}"
+                                <input id="phone" placeholder="Ingrese el número de teléfono del médico" type="text"
+                                    name="phone" required value="{{ old('phone', $patient->person) }}"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                             </div>
                         </div>
                         <div class="w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-0">
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="address">Dirección</label>
-                                <input id="address" placeholder="Ingrese la dirección del médico"
-                                    type="text" name="address" required
-                                    value="{{ old('address', $patient->person) }}"
+                                <input id="address" placeholder="Ingrese la dirección del médico" type="text"
+                                    name="address" required value="{{ old('address', $patient->person) }}"
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                             </div>
                         </div>
@@ -128,9 +128,9 @@
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="city_id">Ciudad de
                                     residencia</label>
-                                <select name="city_id"  required
+                                <select name="city_id" required
                                     class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
-                                    <option value="" >Seleccione una ciudad</option>
+                                    <option value="">Seleccione una ciudad</option>
                                     @foreach ($cities as $city)
                                         <option value="{{ $city->id }}"
                                             {{ $city->id == $selectedCity ? 'selected' : '' }}>
@@ -144,11 +144,11 @@
                     <hr
                         class="h-px mx-0 my-4 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent " />
 
-                        <div class="relative flex min-w-0 mb-6 items-center justify-end">
-                            <button type="submit"
-                                class="inline-block px-4 py-2  ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-lime-500 border-0 rounded-lg shadow-md cursor-pointer text-md tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Guardar
-                                paciente</button>
-                        </div>
+                    <div class="relative flex min-w-0 mb-6 items-center justify-end">
+                        <button type="submit"
+                            class="inline-block px-4 py-2  ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-lime-500 border-0 rounded-lg shadow-md cursor-pointer text-md tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Guardar
+                            paciente</button>
+                    </div>
                 </form>
             </div>
 
