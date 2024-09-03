@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Auth\AdditionalInfoController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecialtyController;
+use App\Http\Controllers\Auth\AdditionalInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,27 +29,28 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profilePerson', [ProfileController::class, 'editPerson'])->name('profilePerson.edit');
-  
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profilePerson', [ProfileController::class, 'updatePerson'])->name('profilePerson.update');
-    
+
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
-    Route::get('additional-info', [AdditionalInfoController::class, 'create'])
-        ->name('additional-info.create');
+Route::get('additional-info', [AdditionalInfoController::class, 'create'])
+    ->name('additional-info.create');
 
-    Route::post('additional-info', [AdditionalInfoController::class, 'store'])
-        ->name('additional-info.store');
+Route::post('additional-info', [AdditionalInfoController::class, 'store'])
+    ->name('additional-info.store');
 
 //Rutas especialidades
 
-Route::resource('/specialties',SpecialtyController::class);
+Route::resource('/specialties', SpecialtyController::class);
 
 //Rutas pacientes
-Route::resource('/patients',PatientController::class);
+Route::resource('/patients', PatientController::class);
 
-        
+//Rutas doctores
+Route::resource('/doctors', DoctorController::class);
