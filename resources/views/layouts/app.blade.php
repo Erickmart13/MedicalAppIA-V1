@@ -69,6 +69,8 @@
     <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- Popper -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
     <!-- Main Styling -->
     @vite('resources/css/argon-dashboard-tailwind.css')
 </head>
@@ -102,7 +104,13 @@
 
 </body>
 
+<!-- jQuery (necesario para DataTables) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.3/js/dataTables.es.js"></script>
 <!-- plugin for charts  -->
 @vite('resources/js/plugins/chartjs.min.js')
 

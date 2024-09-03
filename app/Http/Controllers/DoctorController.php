@@ -230,6 +230,22 @@ class DoctorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Buscar el usuario por ID
+        $user = User::findOrFail($id);
+    
+        // Buscar la persona (doctor) relacionada a este usuario
+        $person = Person::where('user_id', $user->id)->firstOrFail();
+    
+        // Eliminar la persona
+        $person->delete();
+    
+        // Eliminar el usuario
+        $user->delete();
+    
+        // Notificación de éxito
+        $notification = 'El paciente y su usuario relacionado han sido eliminados correctamente.';
+    
+        // Redirigir a la lista de pacientes con la notificación
+        return redirect('/doctors')->with(compact('notification'));
     }
 }

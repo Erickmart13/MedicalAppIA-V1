@@ -181,15 +181,34 @@ sup {
 2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
 3. Remove gaps between table borders by default.
 */
-
-table {
-  text-indent: 0;
-  /* 1 */
-  border-color: inherit;
-  /* 2 */
+/* Estilo para la cabecera de la tabla */
+/* Estilo para el selector de entradas por página */
+/* Ajusta el tamaño y los márgenes del DataTable */
+.table {
+  width: 100%;
   border-collapse: collapse;
-  /* 3 */
+  margin-bottom: 20px; /* Agrega un margen en la parte inferior para separación */
 }
+
+/* Ajusta los bordes y padding de las celdas */
+.table th, .table td {
+  padding: 12px; /* Ajusta el padding según sea necesario */
+  border: 1px solid #ddd; /* Agrega un borde a las celdas */
+}
+
+/* Ajusta los estilos para el DataTable */
+.dataTables_wrapper {
+  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+  margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+}
+
+/* Asegúrate de que el DataTable no se desborde */
+.dataTables_scroll {
+  overflow-x: auto; /* Agrega un scroll horizontal si es necesario */
+}
+
+
+
 
 /*
 1. Change the font styles in all browsers.
