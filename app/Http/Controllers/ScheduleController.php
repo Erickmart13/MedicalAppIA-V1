@@ -91,7 +91,12 @@ class ScheduleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Obtener el horario por su ID
+    $schedule = Schedule::with(['daysTimes'])->findOrFail($id);
+        $days = Day::all();
+        $times = Time::all();
+        $selectedDay = $schedule->day;
+        return view('schedules.edit', compact('schedule','days','times','selectedDay'));
     }
 
     /**
@@ -99,7 +104,45 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $rules = [
+            'name' => 'required|string',
+            'start_time_id' => 'required|exists:times,id',
+            'end_time_id' => 'required|exists:times,id',
+            'days' => 'required|array',
+            'days.*' => 'exists:days,id',
+        ];
+    
+        $messages = [
+            'name.required' => 'El nombre de la jornada es obligatorio.',
+            'name.string' => 'El nombre debe contener solo caracteres.',
+            'start_time_id.required' => 'La hora de inicio es obligatoria.',
+            'start_time_id.exists' => 'La hora de inicio seleccionada no es válida.',
+            'end_time_id.required' => 'La hora de fin es obligatoria.',
+            'end_time_id.exists' => 'La hora de fin seleccionada no es válida.',
+            'days.required' => 'El día es obligatorio.',
+            'days.*.exists' => 'Uno de los días seleccionados no es válido.',
+        ];
+    
+        $this->validate($request, $rules, $messages);
+    
+        // Obtener el horario existente
+        $schedule = Schedule::findOrFail($id);
+        
+        // Actualizar el nombre del horario
+        $schedule->name = $request->name;
+        $schedule->save();
+        
+        // Sincronizar días seleccionados con las horas de inicio y fin
+        $schedule->daysTimes()->sync([]);
+        foreach ($request->days as $day) {
+            $schedule->daysTimes()->attach($day, [
+                'start_time_id' => $request->start_time_id,
+                'end_time_id' => $request->end_time_id,
+            ]);
+        }
+    
+        $notification = 'El horario se ha actualizado correctamente.';
+        return redirect('/schedules')->with(compact('notification'));
     }
 
     /**
@@ -107,6 +150,12 @@ class ScheduleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $schedule=Schedule::findOrFail($id);
+        $scheduleName=$schedule->name;
+        $schedule->delete();
+
+        $notificationDelete = "El horario $scheduleName se ha eliminado correctamente";
+
+        return redirect('/schedules')->with(compact('notificationDelete'));
     }
 }
