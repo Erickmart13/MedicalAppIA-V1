@@ -8,9 +8,11 @@ use App\Models\Person;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
+use Illuminate\Support\Str;
 class AdminUserSeeder extends Seeder
 {
+
+   
     /**
      * Run the database seeds.
      */
@@ -21,6 +23,8 @@ class AdminUserSeeder extends Seeder
             'user_name' => 'admin',
             'email' => 'admin@example.com',
             'password' => Hash::make('admin123'), // Asegúrate de usar un password seguro
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
         ]);
 
         // Obtener el rol de administrador

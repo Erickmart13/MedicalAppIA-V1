@@ -101,7 +101,7 @@
 
     </main>
     @include('layouts.configurator')
-
+@yield('scripts')
 </body>
 
 <!-- jQuery (necesario para DataTables) -->

@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Person;
 use App\Models\Specialty;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -97,6 +98,8 @@ class DoctorController extends Controller
             'user_name' => $request->user_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
         ]);
 
         // Asignar el rol al usuario (por ejemplo, 'patient')

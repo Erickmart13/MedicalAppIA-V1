@@ -20,4 +20,9 @@ class ScheduleDayTime extends Model
     {
         return $this->belongsTo(Time::class, 'end_time_id');
     }
+
+    public function scheduleAssignment()
+    {
+        return $this->belongsTo(ScheduleAssignment::class);
+    }
 }

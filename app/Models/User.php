@@ -60,4 +60,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Specialty::class, 'user_specialty', 'user_id', 'specialty_id');
     }
+
+    
 }

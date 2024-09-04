@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SpecialtyController;
+use App\Http\Controllers\ScheduleAssignmentController;
 use App\Http\Controllers\Auth\AdditionalInfoController;
 
 /*
@@ -57,3 +59,12 @@ Route::resource('/patients', PatientController::class);
 Route::resource('/doctors', DoctorController::class);
 // Rutas horarios
 Route::resource('/schedules', ScheduleController::class);
+// Rutas asignar horarios
+Route::resource('/scheduleAssignments', ScheduleAssignmentController::class);
+
+
+
+// routes/web.php
+
+
+
