@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('page-title')
+    Horarios
+@endsection
 @section('content')
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
@@ -26,10 +28,10 @@
                     @endif
                 </div>
 
-                <div class="flex-auto px-0 pt-0 pb-2">
+                <div class="flex-auto px-4 pt-4 pb-4">
                     <div class="p-0 overflow-x-auto">
-                        <table
-                            class="items-center w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500">
+                        <table id="table" class="display"
+                            class="display table w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500">
                             <thead class="align-bottom">
                                 <tr>
                                     <th
@@ -112,13 +114,18 @@
                                         </td>
                                         <td
                                             class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                            
                                             <form action="{{ url('/schedules/' . $schedule->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('horarios.edit', ['horario' => $schedule->id]) }}"
-                                                    class="bg-blue-500 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold leading-none text-white">Editar</a>
-                                                <button type="submit"
-                                                    class="bg-red-500 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold leading-none text-white">Eliminar</button>
+                                                
+                                             
+                                                <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700" href="{{ url('/schedules/' . $schedule->id . '/edit') }}"><i class="mr-2 fas fa-pencil-alt text-lime-500" aria-hidden="true"></i></a>
+                                                <button type="submit" class="relative z-10 inline-block px-2 py-2.5 mb-0 font-bold text-center text-transparent align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 bg-gradient-to-tl from-red-600 to-orange-600 hover:-translate-y-px active:opacity-85 bg-x-25 bg-clip-text" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-orange-600 bg-x-25 bg-clip-text"></i></a>
+                                               
+                                                
+                                                
+
                                             </form>
                                         </td>
                                     </tr>
