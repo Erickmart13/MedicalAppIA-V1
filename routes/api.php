@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SpecialtyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Obtener usuarios por roles
 Route::get('/roles/{roleId}/users', [RoleController::class, 'getUsersByRole']);
+
+ // obtener doctores por especialidades
+ Route::get('/specialties/{specialtyId}/users', [SpecialtyController::class, 'getDoctorsBySpecialty']);
+
+ // obtener horarios del medico
+ Route::get('/users/{personId}/schedules', [App\Http\Controllers\ScheduleController::class, 'getDoctorsBySchedule']);

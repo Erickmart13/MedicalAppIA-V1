@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Day;
 use App\Models\Time;
+use App\Models\User;
 use App\Models\Schedule;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ScheduleController extends Controller
 {
@@ -158,4 +161,79 @@ class ScheduleController extends Controller
 
         return redirect('/schedules')->with(compact('notificationDelete'));
     }
+
+
+    public function getDoctorsBySchedule($doctorId)
+    {
+        $doctor = User::findOrFail($doctorId);
+    
+        // Verifica si el doctor tiene el rol de doctor
+        if (!$doctor->roles->contains('id', 2)) {
+            return response()->json(['error' => 'Esta persona no es un doctor.'], 404);
+        }
+    
+        $date = request()->query('date');
+    
+        // Obtener las citas del doctor en la fecha seleccionada
+        $bookedAppointments = Appointment::where('doctor_id', $doctorId)
+            ->where('date', $date)
+            ->pluck('hour')
+            ->toArray();
+    
+        // Obtén los horarios asignados a este doctor y carga las relaciones necesarias
+        $schedules = $doctor->schedules()->with('daysTimes')->get();
+    
+        $result = $schedules->map(function ($schedule) use ($doctorId, $bookedAppointments) {
+            return [
+                'schedule' => $schedule->only(['id', 'name']),
+                'days_times' => $schedule->daysTimes->map(function ($dayTime) use ($doctorId, $bookedAppointments) {
+                    $startTime = $dayTime->pivot->start_time_id ? Time::find($dayTime->pivot->start_time_id)->time : null;
+                    $endTime = $dayTime->pivot->end_time_id ? Time::find($dayTime->pivot->end_time_id)->time : null;
+    
+                    if ($startTime && $endTime) {
+                        $intervals = $this->getTimeIntervals($doctorId, $startTime, $endTime, $bookedAppointments);
+                    } else {
+                        $intervals = [];
+                    }
+    
+                    return [
+                        'day' => $dayTime->only(['id', 'name']),
+                        'time_intervals' => $intervals,
+                    ];
+                })->values()
+            ];
+        });
+    
+        return response()->json($result);
+    }
+
+    private function getTimeIntervals($doctorId, $startTime, $endTime, $bookedAppointments)
+{
+    $start = Carbon::parse($startTime);
+    $end = Carbon::parse($endTime);
+    $intervals = [];
+
+    while ($start->lt($end)) {
+        $intervalEnd = $start->copy()->addMinutes(30);
+
+        if ($intervalEnd->gt($end)) {
+            $intervalEnd = $end;
+        }
+
+        $intervalStartTime = $start->format('H:i:s');
+
+        // Ensure the interval is not booked
+        if (!in_array($intervalStartTime, $bookedAppointments)) {
+            $intervals[] = [
+                'start_time' => $intervalStartTime,
+                'end_time' => $intervalEnd->format('H:i:s')
+            ];
+        }
+
+        $start = $intervalEnd;
+    }
+
+    return $intervals;
+}
+
 }

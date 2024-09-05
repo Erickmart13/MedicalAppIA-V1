@@ -22,7 +22,7 @@ class User extends Authenticatable
         // 'last_name',
         'email',
         'password',
-        
+
     ];
 
     /**
@@ -45,11 +45,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'user_role');
-    }
-
     public function person()
     {
         return $this->hasOne(Person::class);
@@ -60,6 +55,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Specialty::class, 'user_specialty', 'user_id', 'specialty_id');
     }
+    // Relación muchos a muchos con Role a través de role_person
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
+    }
 
-    
+    public function schedules()
+{
+    return $this->belongsToMany(Schedule::class, 'schedule_assignments', 'user_id', 'schedule_id')
+                ->withPivot('active'); // Si quieres acceder al campo 'active'
+}
 }

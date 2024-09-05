@@ -61,10 +61,10 @@ Route::resource('/doctors', DoctorController::class);
 Route::resource('/schedules', ScheduleController::class);
 // Rutas asignar horarios
 Route::resource('/scheduleAssignments', ScheduleAssignmentController::class);
+// Rutas citas
+Route::get('/appointments', [App\Http\Controllers\AppointmentController::class, 'index']);
 
-
-
-// routes/web.php
-
+Route::get('/bookAppointments/create', [App\Http\Controllers\AppointmentController::class, 'create']);
+Route::post('/bookAppointments', [App\Http\Controllers\AppointmentController::class, 'store']);
 
 
