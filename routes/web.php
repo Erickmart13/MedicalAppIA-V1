@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
@@ -77,3 +78,7 @@ Route::post('/bookAppointments', [App\Http\Controllers\AppointmentController::cl
 
 // // Rutas reservar citas
 // Route::resource('/bookAppointments', AppointmentController::class);
+
+// Rutas consultorios
+Route::resource('offices', OfficeController::class);
+// Route::resource('asignarConsultorios', OfficeAssignmentController::class);
