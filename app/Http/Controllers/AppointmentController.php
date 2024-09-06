@@ -18,7 +18,7 @@ class AppointmentController extends Controller
             ->where('status', 'Reservada')
             ->where('patient_id');
         $oldAppointments = Appointment::all()
-            ->whereIn('status', ['Atendida', 'Cancelada'])
+            ->whereIn('status', ['Finalizada', 'Cancelada'])
             ->where('patient_id');
 
 
@@ -100,6 +100,51 @@ class AppointmentController extends Controller
 
         // Notificación de éxito
         $notification = 'La cita se ha agendado correctamente';
+        return back()->with(compact('notification'));
+    }
+
+ 
+    public function cancel(Appointment $appointment){
+        $appointment->status ='Cancelada';
+        $appointment->save();
+
+        $notification = 'La cita se ha cancelado correctamente.';
+
+        return back()->with(compact('notification'));
+
+
+    }
+    public function formCancel(Appointment $appointment){
+        // $appointment->status ='Cancelada';
+        // $appointment->save();
+
+        // $notification = 'La cita se ha cancelado correctamente.';
+
+        return view('appointments.cancel',compact('$appointment'));
+
+
+    }
+
+    public function show(Appointment $appointment){
+        return view('appointments.show', compact('appointment'));
+    }
+
+    public function confirm(Appointment $appointment){
+
+        $appointment->status ='Confirmada';
+        $appointment->save();
+
+        $notification = 'La cita se ha confirmado correctamente.';
+
+        return back()->with(compact('notification'));
+    }
+    public function finished(Appointment $appointment){
+
+        $appointment->status ='Finalizada';
+        $appointment->save();
+
+        $notification = 'La cita ha finalizado correctamente.';
+
         return back()->with(compact('notification'));
     }
 }

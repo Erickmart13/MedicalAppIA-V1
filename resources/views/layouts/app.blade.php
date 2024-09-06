@@ -73,6 +73,8 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
     <!-- Main Styling -->
     @vite('resources/css/argon-dashboard-tailwind.css')
+
+    
 </head>
 
 <body

@@ -7,6 +7,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SpecialtyController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ScheduleAssignmentController;
 use App\Http\Controllers\Auth\AdditionalInfoController;
 
@@ -62,9 +63,17 @@ Route::resource('/schedules', ScheduleController::class);
 // Rutas asignar horarios
 Route::resource('/scheduleAssignments', ScheduleAssignmentController::class);
 // Rutas citas
-Route::get('/appointments', [App\Http\Controllers\AppointmentController::class, 'index']);
+Route::get('/miscitas', [App\Http\Controllers\AppointmentController::class, 'index']);
+Route::get('/miscitas/{appointment}/show', [App\Http\Controllers\AppointmentController::class, 'show']);
+Route::post('/miscitas/{appointment}/cancel', [App\Http\Controllers\AppointmentController::class, 'cancel']);
+Route::post('/miscitas/{appointment}/confirm', [App\Http\Controllers\AppointmentController::class, 'confirm']);
+Route::post('/miscitas/{appointment}/finished', [App\Http\Controllers\AppointmentController::class, 'finished']);
+Route::get('/miscitas/{appointment}/cancel', [App\Http\Controllers\AppointmentController::class, 'formCancel']);
 
+// Rutas reservar citas
 Route::get('/bookAppointments/create', [App\Http\Controllers\AppointmentController::class, 'create']);
 Route::post('/bookAppointments', [App\Http\Controllers\AppointmentController::class, 'store']);
 
 
+// // Rutas reservar citas
+// Route::resource('/bookAppointments', AppointmentController::class);

@@ -13,7 +13,9 @@
                         class="inline-block px-2.5  py-1  ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-red-500 border-0 rounded-lg shadow-md cursor-pointer text-sm tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85"">Regresar</a>
                 </div>
             </div>
+
             <div>
+
                 <form action="{{ url('/bookAppointments') }}" method="POST"
                     class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border p-6">
                     @csrf
@@ -23,6 +25,19 @@
                                 <div class="relative p-2 my-1 text-white bg-red-500 rounded-lg">{{ $error }}</div>
                             @endforeach
                         @endif
+
+                        @if (session('notification'))
+                            <div class="relative p-2 my-2 text-white rounded-lg bg-lime-500">
+                                {{ session('notification') }}
+                            </div>
+                        @else
+                            @if (session('notificationDelete'))
+                                <div class="relative p-2 my-2 text-white rounded-lg bg-red-500">
+                                    {{ session('notificationDelete') }}
+                                </div>
+                            @endif
+                        @endif
+
                         <p class="leading-normal  uppercase dark:text-white dark:opacity-60 text-sm">Información cita</p>
                     </div>
                     {{-- @if (auth()->user()->role == 'admin') --}}
