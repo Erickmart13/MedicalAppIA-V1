@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\OfficeAssignmentController;
 use App\Http\Controllers\ScheduleAssignmentController;
 use App\Http\Controllers\Auth\AdditionalInfoController;
 
@@ -81,4 +82,5 @@ Route::post('/bookAppointments', [App\Http\Controllers\AppointmentController::cl
 
 // Rutas consultorios
 Route::resource('offices', OfficeController::class);
+Route::resource('assignOffices', OfficeAssignmentController::class);
 // Route::resource('asignarConsultorios', OfficeAssignmentController::class);

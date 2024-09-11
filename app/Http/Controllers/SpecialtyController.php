@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
 
@@ -139,5 +140,22 @@ class SpecialtyController extends Controller
             });
         
             return response()->json($doctorsWithPersonInfo);
+    }
+
+    public function getSpecialtiesByDoctor($doctorId)
+    {
+        // Encuentra al médico por su ID o lanza un error 404 si no se encuentra
+        $doctor = User::findOrFail($doctorId);
+
+         // Verifica si el doctor tiene el rol de doctor
+         if (!$doctor->roles->contains('id', 2)) {
+            return response()->json(['error' => 'Esta persona no es un doctor.'], 404);
+        }
+    
+        // Obtén las especialidades asociadas al médico
+        $specialties = $doctor->specialties()->get();
+    
+        // Retorna las especialidades en formato JSON
+        return response()->json($specialties);
     }
 }

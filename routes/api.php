@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SpecialtyController;
 
 /*
@@ -28,3 +29,9 @@ Route::get('/roles/{roleId}/users', [RoleController::class, 'getUsersByRole']);
 
  // obtener horarios del medico
  Route::get('/users/{personId}/schedules', [App\Http\Controllers\ScheduleController::class, 'getDoctorsBySchedule']);
+
+ // obtener las especialidades de los doctores 
+Route::get('/users/{userId}/specialties', [SpecialtyController::class, 'getSpecialtiesByDoctor']);
+
+// Rutas reportes
+Route::get('/reporte-consultorios-pdf', [ReportController::class, 'generatePDF'])->name('reporte.consultorios.pdf');
