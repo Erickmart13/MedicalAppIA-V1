@@ -19,7 +19,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'user_name',
-        // 'last_name',
         'email',
         'password',
 
@@ -61,6 +60,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
     }
 
+    // Método para verificar si un usuario tiene un rol específico
+    public function hasRole($role): bool
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
+
+   
     public function schedules()
 {
     return $this->belongsToMany(Schedule::class, 'schedule_assignments', 'user_id', 'schedule_id')

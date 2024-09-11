@@ -17,32 +17,32 @@
 
     <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
         <ul class="flex flex-col pl-0 mb-0">
-            
-            
 
-            @if ((auth()->user()->role == ''))
-            <li class="w-full mt-4">
-                <h6
-                    class="text-blue-700 pl-6 ml-2 text-sm font-bold leading-tight uppercase dark:text-white opacity-90">
-                    Estadísticas
-                </h6>
-            </li>
-            <hr
-                class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-            <li class="mt-0.5 w-full">
-                <a class="py-2.7 bg-blue-500/13 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
-                    href="/dashboard">
-                    <div
-                        class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                        <i class="fas fa-chart-line text-red-500"></i>
-                    </div>
-                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Dashboard</span>
-                </a>
-            </li>
+
+
+            @if (auth()->check() && auth()->user()->hasRole('admin'))
+                <li class="w-full mt-4">
+                    <h6
+                        class="text-blue-700 pl-6 ml-2 text-sm font-bold leading-tight uppercase dark:text-white opacity-90">
+                        Estadísticas
+                    </h6>
+                </li>
+                <hr
+                    class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
+                <li class="mt-0.5 w-full">
+                    <a class="py-2.7 bg-blue-500/13 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
+                        href="/dashboard">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i class="fas fa-chart-line text-red-500"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Dashboard</span>
+                    </a>
+                </li>
             @endif
 
             <li class="w-full mt-4">
-                @if (auth()->user()->role == '')
+                @if (auth()->check() && auth()->user()->hasRole('admin'))
                     <h6
                         class="text-blue-700 pl-6 ml-2 text-sm font-bold leading-tight uppercase dark:text-white opacity-90">
                         GESTIÓN</h6>
@@ -51,23 +51,12 @@
                         class="text-blue-700 pl-6 ml-2 text-sm font-bold leading-tight uppercase dark:text-white opacity-90">
                         MENÚ</h6>
                 @endif
-            
-            <hr
-                class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
+
+                <hr
+                    class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
             </li>
 
-            @if (auth()->user()->role == '')
-                
-
-                
-                {{-- <li class="w-full mt-4">
-                    <h6
-                        class="text-blue-700 pl-6 ml-2 text-sm font-bold leading-tight uppercase dark:text-white opacity-90">
-                        GESTIÓN</h6>
-                </li>
-                <hr
-                    class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" /> --}}
-
+            @if (auth()->check() && auth()->user()->hasRole('admin'))
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
                         href="/bookAppointments/create">
@@ -214,7 +203,7 @@
 
 
                 </li>
-            @elseif (auth()->user()->role == 'doctor')
+            @elseif (auth()->check() && auth()->user()->hasRole('doctor'))
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
                         href="/miscitas">
@@ -227,7 +216,7 @@
                 </li>
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href={{ url('/asignarHorarios') }}>
+                        href={{ url('/scheduleAssignments') }}>
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="far fa-clock text-gray-500"></i>
@@ -238,7 +227,7 @@
             @else
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="/reservarcitas/create">
+                        href="/bookAppointments/create">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="relative top-0 text-sm leading-normal text-orange-500 far fa-calendar-alt"></i>

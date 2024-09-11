@@ -51,15 +51,28 @@ Route::get('additional-info', [AdditionalInfoController::class, 'create'])
 Route::post('additional-info', [AdditionalInfoController::class, 'store'])
     ->name('additional-info.store');
 
-//Rutas especialidades
 
-Route::resource('/specialties', SpecialtyController::class);
 
-//Rutas pacientes
-Route::resource('/patients', PatientController::class);
 
-//Rutas doctores
-Route::resource('/doctors', DoctorController::class);
+Route::middleware('auth', 'role:admin')->group(function () {
+    //Rutas especialidades
+
+    Route::resource('/specialties', SpecialtyController::class);
+    //Rutas pacientes
+    Route::resource('/patients', PatientController::class);
+
+    //Rutas doctores
+    Route::resource('/doctors', DoctorController::class);
+});
+Route::middleware('auth', 'role:admin,doctor,patient')->group(function () {
+    // Rutas reservar citas
+Route::get('/bookAppointments/create', [App\Http\Controllers\AppointmentController::class, 'create']);
+Route::post('/bookAppointments', [App\Http\Controllers\AppointmentController::class, 'store']);
+
+});
+
+
+
 // Rutas horarios
 Route::resource('/schedules', ScheduleController::class);
 // Rutas asignar horarios
@@ -72,13 +85,6 @@ Route::post('/miscitas/{appointment}/confirm', [App\Http\Controllers\Appointment
 Route::post('/miscitas/{appointment}/finished', [App\Http\Controllers\AppointmentController::class, 'finished']);
 Route::get('/miscitas/{appointment}/cancel', [App\Http\Controllers\AppointmentController::class, 'formCancel']);
 
-// Rutas reservar citas
-Route::get('/bookAppointments/create', [App\Http\Controllers\AppointmentController::class, 'create']);
-Route::post('/bookAppointments', [App\Http\Controllers\AppointmentController::class, 'store']);
-
-
-// // Rutas reservar citas
-// Route::resource('/bookAppointments', AppointmentController::class);
 
 // Rutas consultorios
 Route::resource('offices', OfficeController::class);
