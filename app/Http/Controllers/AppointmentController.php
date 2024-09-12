@@ -7,6 +7,7 @@ use App\Models\Person;
 use App\Models\Specialty;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
@@ -23,8 +24,10 @@ class AppointmentController extends Controller
             // Manejar el caso en el que no se encuentra la persona asociada
             return redirect()->back()->with('error', 'No se encontró información de persona asociada con este usuario.');
         }
+        
+        $user = User::find(Auth::user()->id);
 
-        $user = auth()->user();
+        
         if ($user) {
             $isAdmin = $user->hasRole('admin');
             $isDoctor = $user->hasRole('doctor');
@@ -124,9 +127,9 @@ class AppointmentController extends Controller
             'specialty_id',
             'patient_id'
         ]);
-
+        $user = User::find(Auth::user()->id);
         // Determinar el paciente según el rol del usuario
-        if (auth()->user()->hasRole('admin')) {  // Usar un método como 'hasRole' para verificar roles
+        if($user->hasRole('admin')) {  // Usar un método como 'hasRole' para verificar roles
             // Si es administrador, toma el 'patient_id' del request
             $data['patient_id'] = $request->input('patient_id');
 
@@ -134,7 +137,7 @@ class AppointmentController extends Controller
             if (!$data['patient_id']) {
                 return back()->withErrors(['patient_id' => 'Debe seleccionar un paciente.']);
             }
-        } else if (auth()->user()->hasRole('patient')) {  // Verificar si el usuario es un paciente
+        } else if ($user->hasRole('patient')) {  // Verificar si el usuario es un paciente
             // Si es paciente, usa el ID del paciente asociado al usuario autenticado
             $person = auth()->user()->person;  // Acceder a la relación 'person'
 
