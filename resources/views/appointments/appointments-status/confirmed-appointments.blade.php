@@ -122,6 +122,8 @@
                     <td
                         class="text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                         <div class="flex justify-center px-2 py-1">
+
+                            @if (auth()->check() && auth()->user()->hasRole('admin'))
                             <form class="pl-12" action="{{ url('/miscitas/' . $appointment->id . '/show') }}"
                                 method="GET">
                                 @csrf
@@ -148,6 +150,45 @@
                                         class=" fas fa-times-circle bg-150 bg-gradient-to-tl from-red-600 to-orange-600 bg-x-25 bg-clip-text"></i>
                                 </button>
                             </form>
+                            @elseif  (auth()->check() && auth()->user()->hasRole('doctor'))
+                            <form class="pl-12" action="{{ url('/miscitas/' . $appointment->id . '/show') }}"
+                                method="GET">
+                                @csrf
+                                <button title="Ver cita" type="submit"
+                                    class="relative z-10 inline-block px-2 py-2.5 font-bold text-center text-transparent align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-normal text-lg ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 bg-clip-text">
+                                    <i
+                                        class=" fas fa-eye bg-150 bg-gradient-to-tl from-blue-500 to-sky-500 bg-x-25 bg-clip-text"></i>
+                                </button>
+                            </form>
+                            <form action="{{ url('/miscitas/' . $appointment->id . '/finished') }}" method="POST">
+                                @csrf
+                                <button title="Confirmar cita" type="submit"
+                                    class=" relative z-10 inline-block px-2 py-2.5 font-bold text-center text-transparent align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-normal text-lg ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 bg-clip-text">
+                                    <i
+                                        class=" fas fa-check-circle bg-150 bg-gradient-to-tl from-green-600 to-lime-400 bg-x-25 bg-clip-text"></i>
+                               
+                                    </button>
+                            </form>
+                            <form class="pr-6" action="{{ url('/miscitas/' . $appointment->id . '/cancel') }}"
+                                method="POST">
+                                @csrf
+                                <button title="Cancelar cita" type="submit"
+                                    class="relative z-10 inline-block px-2 py-2.5 mb-0 font-bold text-center text-transparent align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-normal text-lg ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 bg-clip-text">
+                                    <i
+                                        class=" fas fa-times-circle bg-150 bg-gradient-to-tl from-red-600 to-orange-600 bg-x-25 bg-clip-text"></i>
+                                </button>
+                            </form>
+                            @else
+                            <form class="pl-12" action="{{ url('/miscitas/' . $appointment->id . '/show') }}"
+                                method="GET">
+                                @csrf
+                                <button title="Ver cita" type="submit"
+                                    class="relative z-10 inline-block px-2 py-2.5 font-bold text-center text-transparent align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-normal text-lg ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 bg-clip-text">
+                                    <i
+                                        class=" fas fa-eye bg-150 bg-gradient-to-tl from-blue-500 to-sky-500 bg-x-25 bg-clip-text"></i>
+                                </button>
+                            </form>
+                            @endif
                         </div>
                     </td>
 
