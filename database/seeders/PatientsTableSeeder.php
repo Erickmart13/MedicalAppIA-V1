@@ -15,7 +15,7 @@ class PatientsTableSeeder extends Seeder
      */
     public function run()
     {
-        Person::factory()->count(20)->create()->each(function ($person) {
+        Person::factory()->count(10)->create()->each(function ($person) {
             $rolePatient = Role::where('name', 'patient')->first();
             $person->user->roles()->attach($rolePatient);
         });

@@ -40,7 +40,7 @@
 
                         <p class="leading-normal  uppercase dark:text-white dark:opacity-60 text-sm">Información cita</p>
                     </div>
-                    {{-- @if (auth()->user()->role == 'admin') --}}
+                    @if (auth()->check() && auth()->user()->hasRole('admin'))
                     <div class="flex flex-wrap -mx-3 ">
                         <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                             <div class="mb-4">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- @endif --}}
+                     @endif
                     <div class="flex flex-wrap -mx-3  ">
                         <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                             <div class="mb-4">

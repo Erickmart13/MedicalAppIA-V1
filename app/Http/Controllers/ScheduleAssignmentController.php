@@ -15,17 +15,37 @@ class ScheduleAssignmentController extends Controller
      */
     public function index()
     {
-        $scheduleAssignments = ScheduleAssignment::with(['schedule.daysTimes', 'schedule.daysTimes.startTime', 'schedule.daysTimes.endTime', 'user.roles'])->get();
-
-        $schedules = $scheduleAssignments->groupBy('schedule_id');
+        // Obtén el usuario autenticado
+        $user = auth()->user();
     
+        // Verifica si el usuario tiene el rol de doctor
+        if ($user->hasRole('doctor')) {
+            // Filtra las asignaciones de horario para el usuario autenticado
+            $scheduleAssignments = ScheduleAssignment::with(['schedule.daysTimes', 'schedule.daysTimes.startTime', 'schedule.daysTimes.endTime'])
+                ->where('user_id', $user->id)
+                ->get();
+    
+            // Agrupa las asignaciones de horarios por ID de horario
+            $schedules = $scheduleAssignments->groupBy('schedule_id');
+        } elseif ($user->hasRole('admin')) {
+            // Si el usuario es administrador, muestra todas las asignaciones de horarios
+            $scheduleAssignments = ScheduleAssignment::with(['schedule.daysTimes', 'schedule.daysTimes.startTime', 'schedule.daysTimes.endTime'])->get();
+    
+            // Agrupa las asignaciones de horarios por ID de horario
+            $schedules = $scheduleAssignments->groupBy('schedule_id');
+        } else {
+            // Si el usuario no tiene el rol de doctor ni administrador, redirige o maneja el caso según tus necesidades
+            return redirect()->back()->with('error', 'No tienes permiso para ver esta página.');
+        }
+    
+        // Obtén todos los horarios y roles si es necesario para el usuario autenticado
         $schedule = Schedule::all();
-        $user = User::all();
         $roles = Role::all();
-        
-        
-        return view('scheduleAssignments.index',compact('roles','user','schedule','scheduleAssignments','schedules'));
+    
+        // Retorna la vista con los datos filtrados
+        return view('scheduleAssignments.index', compact('roles', 'schedule', 'scheduleAssignments', 'schedules'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

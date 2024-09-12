@@ -20,7 +20,7 @@ class DoctorsTableSeeder extends Seeder
         $specialties = Specialty::all();
 
        // Crear 20 doctores
-       Person::factory()->count(20)->create()->each(function ($person) use ($specialties) {
+       Person::factory()->count(10)->create()->each(function ($person) use ($specialties) {
         // Asignar el rol de doctor al usuario asociado con la persona
         $roleDoctor = Role::where('name', 'doctor')->first();
         $person->user->roles()->attach($roleDoctor);

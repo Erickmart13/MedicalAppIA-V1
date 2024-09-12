@@ -203,10 +203,17 @@ class PatientController extends Controller
     // Validar los datos del request
     $this->validate($request, $rules, $messages);
 
+    $user ->update([
+            
+        'email' => $request->email,
+        
+    ]);
+
     // Actualizar la información de la persona
     $person->update([
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
+        'email' => $user->email,
         'cedula' => $request->cedula,
         'address' => $request->address,
         'phone' => $request->phone,
