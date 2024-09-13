@@ -12,6 +12,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\OfficeAssignmentController;
 use App\Http\Controllers\ScheduleAssignmentController;
 use App\Http\Controllers\Auth\AdditionalInfoController;
+use App\Http\Controllers\EmergencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,3 +91,7 @@ Route::get('/miscitas/{appointment}/cancel', [App\Http\Controllers\AppointmentCo
 Route::resource('offices', OfficeController::class);
 Route::resource('assignOffices', OfficeAssignmentController::class);
 // Route::resource('asignarConsultorios', OfficeAssignmentController::class);
+
+ //Rutas especialidades
+
+ Route::resource('/emergencies', EmergencyController::class);

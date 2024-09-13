@@ -9,11 +9,11 @@
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-lg bg-clip-border">
 
                 <div class="flex items-center p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6 class="dark:text-white">Especialidades</h6>
+                    <h6 class="dark:text-white">Triaje</h6>
 
                     <a href="{{ url('/emergencies/create') }}"
                         class="inline-block px-2.5  py-1 ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-sm tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Nueva
-                        especialidad</a>
+                        Triaje</a>
                 </div>
                 <div>
                     @if (session('notification'))
@@ -37,13 +37,21 @@
                                 <tr>
                                     <th
                                         class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        Nombre</th>
+                                        Paciente</th>
                                     <th
                                         class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        Descripción</th>
+                                        F. cardíaca</th>
+                                   
+                                    <th
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        Presión arterial</th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        Temperatura (°C)</th>
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         Estado</th>
+                                    
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         Creado</th>
@@ -54,7 +62,7 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($emergencies as $especialidad)
+                                @foreach ($emergencies as $emergencia)
                                     <tr>
                                         <td
                                             class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
@@ -63,7 +71,8 @@
                                                 <div class="flex flex-col justify-center">
                                                     <h6
                                                         class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                        {{ $especialidad->name }}</h6>
+                                                        {{ $emergencia->user->person->first_name }}
+                                                        {{ $emergencia->user->person->last_name }}</h6>
 
                                                 </div>
                                             </div>
@@ -73,43 +82,66 @@
                                             class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                             <h6
                                                 class="mb-0 text-sm  leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                {{ Str::limit($especialidad->description, 60) }}</h6>
+                                                {{ $emergencia->heart_rate }}</h6>
 
                                         </td>
-
                                         <td
-                                            class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            @if ($especialidad->active)
-                                                <span
-                                                    class="bg-gradient-to-tl from-emerald-500 to-teal-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
-                                                    Activo
-                                                </span>
-                                            @else
-                                                <span
-                                                    class="bg-gradient-to-tl from-red-600 to-rosa-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
-                                                    Inactivo
-                                                </span>
-                                            @endif
+                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                            <h6
+                                                class="mb-0 text-sm  leading-tight dark:text-white dark:opacity-80 font-normal">
+                                                {{ $emergencia->respiratory_rate }}</h6>
+
                                         </td>
+                                        <td
+                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                            <h6
+                                                class="mb-0 text-sm  leading-tight dark:text-white dark:opacity-80 font-normal">
+                                                {{ $emergencia->temperature }}</h6>
+
+                                        </td>
+                                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                            <h6 class="mb-0 text-sm leading-tight dark:text-white dark:opacity-80 font-normal">
+                                                @if ($emergencia->severity === 'alto')
+                                                    <span class="bg-gradient-to-tl from-emerald-500 to-teal-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                                                        Alto
+                                                    </span>
+                                                @elseif ($emergencia->severity === 'medio')
+                                                    <span class="bg-gradient-to-tl from-orange-500 to-orange-600 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                                                        Medio
+                                                    </span>
+                                                @elseif ($emergencia->severity === 'bajo')
+                                                    <span class="bg-gradient-to-tl from-red-600 to-rosa-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                                                        Bajo
+                                                    </span>
+                                                @else
+                                                    <span class="bg-gray-500 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                                                        Desconocido
+                                                    </span>
+                                                @endif
+                                            </h6>
+                                        </td>
+                                        
+
+                                        
                                         <td
                                             class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                             <h6
                                                 class="mb-0 text-sm  leading-tight dark:text-white dark:opacity-80 font-normal">
-                                                {{ \Carbon\Carbon::parse($especialidad->created_at)->format('Y-m-d') }}</h6>
+                                                {{ \Carbon\Carbon::parse($emergencia->created_at)->format('Y-m-d') }}</h6>
                                         </td>
 
                                         <td
                                             class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
 
-                                            <form action="{{ url('/specialties/' . $especialidad->id) }}" method="POST">
+                                            <form action="{{ url('/emergencies/' . $emergencia->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
                                                 <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700"
-                                                    href="{{ url('/specialties/' . $especialidad->id) }}"><i
+                                                    href="{{ url('/emergencies/' . $emergencia->id) }}"><i
                                                         class="mr-2 far fa-eye text-blue-500" aria-hidden="true"></i></a>
                                                 <a class="inline-block dark:text-white px-2 py-2.5 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-normal text-mb ease-in bg-150 hover:-translate-y-px active:opacity-85 bg-x-25 text-slate-700"
-                                                    href="{{ url('/specialties/' . $especialidad->id . '/edit') }}"><i
+                                                    href="{{ url('/emergencies/' . $emergencia->id . '/edit') }}"><i
                                                         class="mr-2 fas fa-pencil-alt text-lime-500"
                                                         aria-hidden="true"></i></a>
 
