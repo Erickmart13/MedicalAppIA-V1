@@ -161,7 +161,7 @@
                     <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Información de Usuario</p>
 
                     <div class="flex flex-wrap -mx-3">
-
+                    <input type="text" name="fake_email" style="display:none;" autocomplete="username">
                         <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="user_name">Nombre de
@@ -182,6 +182,7 @@
                         </div>
 
                         <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                        <input type="password" name="fake_password" style="display:none;" autocomplete="password">
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2"
                                     for="password">Contraseña</label>
